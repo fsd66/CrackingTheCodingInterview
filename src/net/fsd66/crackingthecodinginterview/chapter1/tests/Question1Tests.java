@@ -2,8 +2,10 @@ package net.fsd66.crackingthecodinginterview.chapter1.tests;
 
 import net.fsd66.crackingthecodinginterview.chapter1.Chapter1Questions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Question1Tests {
@@ -32,5 +34,11 @@ public class Question1Tests {
     @Test
     public void twoSpacesArentUnique() {
         assertFalse(Chapter1Questions.question1IsUnique("  "));
+    }
+
+    @Test
+    public void throwNull() {
+        Executable executable = () -> Chapter1Questions.question1IsUnique(null);
+        assertThrows(NullPointerException.class, executable);
     }
 }

@@ -2,8 +2,10 @@ package net.fsd66.crackingthecodinginterview.chapter1.tests;
 
 import net.fsd66.crackingthecodinginterview.chapter1.Chapter1Questions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Question2Tests {
@@ -47,4 +49,9 @@ public class Question2Tests {
         assertFalse(Chapter1Questions.question2CheckPermutation(test, test2));
     }
 
+    @Test
+    public void throwNull() {
+        Executable executable = () -> Chapter1Questions.question2CheckPermutation(null, null);
+        assertThrows(NullPointerException.class, executable);
+    }
 }
