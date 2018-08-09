@@ -29,7 +29,7 @@ public class Chapter1Questions {
         Map<Character, Integer> memory = new HashMap<>();
         for(int i = 0; i < input1.length(); i++) {
             char c = input1.charAt(i);
-            int count = memory.containsKey(c) ? memory.get(c) : 0;
+            int count = memory.getOrDefault(c, 0);
             count++;
             memory.put(c, count);
         }
@@ -94,13 +94,18 @@ public class Chapter1Questions {
         Map<Character, Integer> memory = new HashMap<>();
 
         for(int i = 0; i < input.length(); i++) {
+            final int difference = 'a' - 'A';
             char c = input.charAt(i);
-            if(c >= 'a' || c <= 'z') {
+            if(c >= 'a' && c <= 'z') {
                 // convert lower case to upper for case insensitivity
-                c -= 'a' - 'A';
+                c -= difference;
             }
 
-            int count = memory.containsKey(c) ? memory.get(c) : 0;
+            if(c < '!' || c > '~') {
+                continue;
+            }
+
+            int count = memory.getOrDefault(c, 0);
             count++;
             memory.put(c, count);
         }
